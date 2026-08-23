@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { @apply border-earth-200 dark:border-night-700; }
+
+  body {
+    @apply bg-earth-50 dark:bg-night-900 text-earth-900 dark:text-earth-50 font-arabic antialiased;
+    direction: rtl;
+    min-height: 100vh;
+  }
+
+  /* Warm ambient background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(232, 141, 42, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(109, 140, 86, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .dark body::before {
+    background: radial-gradient(ellipse at 80% 20%, rgba(232, 141, 42, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(109, 140, 86, 0.04) 0%, transparent 50%);
+  }
+
+  html[dir="rtl"] {
+    --scrollbar-start: 0;
+    --scrollbar-end: auto;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-earth-300 dark:bg-night-600 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-earth-400 dark:bg-night-500; }
+
+  *,
+  *::before,
+  *::after {
+    @apply transition-colors duration-200;
+  }
+
+  ::selection {
+    @apply bg-primary-200 dark:bg-primary-800 text-primary-900 dark:text-primary-100;
+  }
+
+  /* Smooth dark mode transition */
+  html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer components {
+  .card-warm {
+    @apply bg-white/90 dark:bg-night-800/90 backdrop-blur-sm rounded-2xl border border-earth-200 dark:border-night-700 shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  .card-solid {
+    @apply bg-white dark:bg-night-800 rounded-2xl border border-earth-200 dark:border-night-700 shadow-sm;
+  }
+
+  .badge-primary {
+    @apply px-2.5 py-1 rounded-full text-xs font-medium bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-700;
+  }
+
+  .badge-accent {
+    @apply px-2.5 py-1 rounded-full text-xs font-medium bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 border border-accent-200 dark:border-accent-700;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl text-sm font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-earth-600 dark:text-earth-400 hover:bg-earth-100 dark:hover:bg-night-700 transition-all duration-200;
+  }
+
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .dark .bg-grid-pattern {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  }
+
+  .card-hover {
+    @apply hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300;
+  }
+
+  .input-warm {
+    @apply w-full px-4 py-3 rounded-xl border-2 text-sm bg-earth-50 dark:bg-night-800 text-earth-900 dark:text-earth-50 placeholder:text-earth-400 dark:placeholder:text-earth-600 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 border-earth-200 dark:border-night-700 hover:border-earth-300 dark:hover:border-night-600 transition-all duration-200;
+  }
+}

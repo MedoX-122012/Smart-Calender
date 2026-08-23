@@ -1,0 +1,21 @@
+{
+  "name": "جدول يومي - منظم المهام والروتين اليومي",
+  "short_name": "جدول يومي",
+  "description": "تطبيق إدارة المهام والروتين اليومي - نظم وقتك وأنجز مهامك بكفاءة",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f5f0",
+  "theme_color": "#82543b",
+  "orientation": "portrait-primary",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["productivity", "education", "lifestyle"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
